@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Création d'une copie du fichier:"
+echo "-------------------------------------------"
+if [ -z "$1" ]; then
+	echo "Entrez le nom du fichier après le script"
+else
+copy=copie
+touch $copy
+
+# permet d'enlever la premier ligne du fichier qui contient des infos et
+#et on utilise le delimiter : on prend  à partir du deuxième champ donc c'est à dire tous le reste du fichier.
+cat $1 | tail -3 | cut -d: -f2 > $copy
+
+echo "La copie $copy est prete"
+fi
